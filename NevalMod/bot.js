@@ -45,7 +45,7 @@ const THUMBS_DOWN_EMOJI = '<:thumbsdown:1419179242071134339>';
 const STAR_EMOJI = '⭐';
 const THUMBS_UP_THRESHOLD = 5;
 
-client.once('ready', async () => {
+client.once('clientReady', async () => {
   console.log('╔═══════════════════════════════════════╗');
   console.log('║  Site: Neval Moderation Bot Ready!   ║');
   console.log('╚═══════════════════════════════════════╝');
