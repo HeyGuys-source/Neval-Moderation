@@ -1,0 +1,146 @@
+═══════════════════════════════════════════════════════════════════
+  DISCORD BOT SETUP GUIDE - Site: Neval Moderation
+═══════════════════════════════════════════════════════════════════
+
+IMPORTANT: You must enable privileged intents in Discord Developer Portal!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 1: Enable Privileged Intents in Discord Developer Portal
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Go to: https://discord.com/developers/applications
+2. Select your bot application
+3. Click on the "Bot" tab in the left sidebar
+4. Scroll down to "Privileged Gateway Intents"
+5. Enable the following toggles:
+   ✅ PRESENCE INTENT
+   ✅ SERVER MEMBERS INTENT
+   ✅ MESSAGE CONTENT INTENT
+6. Click "Save Changes"
+7. Wait 1-2 minutes for changes to take effect
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 2: Deploy Slash Commands
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+After the bot is running successfully, deploy the slash commands by running:
+
+   npm run deploy
+
+This will register all 14 slash commands with Discord.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 3: Invite Bot to Your Server
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Go to: https://discord.com/developers/applications
+2. Select your bot application
+3. Click on "OAuth2" → "URL Generator"
+4. Select these scopes:
+   ✅ bot
+   ✅ applications.commands
+5. Select these bot permissions:
+   ✅ Administrator (or individual permissions below)
+   
+   Recommended individual permissions:
+   - Manage Roles
+   - Manage Channels
+   - Kick Members
+   - Ban Members
+   - Moderate Members
+   - Manage Messages
+   - Read Messages/View Channels
+   - Send Messages
+   - Create Public Threads
+   - Send Messages in Threads
+   - Manage Threads
+   - Embed Links
+   - Attach Files
+   - Add Reactions
+   - Use Slash Commands
+
+6. Copy the generated URL at the bottom
+7. Open it in your browser and select your server
+8. Authorize the bot
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ENVIRONMENT VARIABLES FOR RENDER.COM DEPLOYMENT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+When deploying to Render.com, add these environment variables:
+
+Required:
+  DISCORD_TOKEN          = Your bot token from Discord Developer Portal
+  DISCORD_CLIENT_ID      = Your application client ID
+  DATABASE_URL           = Your PostgreSQL database connection URL
+  PORT                   = 3000
+
+Optional:
+  NODE_ENV               = production
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+RENDER.COM DEPLOYMENT SETTINGS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Build Command:    npm install
+Start Command:    npm start
+Port:            3000
+
+Health Check Endpoint:  https://your-app.onrender.com/health
+
+The bot includes a built-in health check server that responds on:
+  - GET /        → "Bot is running!"
+  - GET /health  → JSON health status
+  - GET /ping    → "pong"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+AVAILABLE COMMANDS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Special Admin Commands:
+  /echo         - Send messages with custom formatting and reactions
+  /ssu3         - Send Site Reval session startup announcement
+  
+Moderation Commands:
+  /ban          - Ban a member from the server
+  /kick         - Kick a member from the server
+  /timeout      - Timeout a member
+  /warn         - Warn a member
+  /warnings     - View warnings for a user
+  /purge        - Delete multiple messages
+  /lock         - Lock a channel
+  /unlock       - Unlock a channel
+
+Utility Commands:
+  /slowmode     - Set slowmode for a channel
+  /announcement - Send an announcement
+  /role         - Add or remove roles from users
+  /serverinfo   - Display server information
+
+Auto-Reactions:
+  - Automatically reacts to forum posts in channel: 1412524146163847269
+  - Adds thumbs up and thumbs down emojis
+  - Adds star emoji when thumbs up reaches 5+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TROUBLESHOOTING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Error: "Used disallowed intents"
+→ Enable privileged intents in Discord Developer Portal (see STEP 1)
+
+Bot is offline:
+→ Check that DISCORD_TOKEN and DISCORD_CLIENT_ID are set correctly
+→ Check the health endpoint to see if the server is running
+→ Check logs for error messages
+
+Commands not showing:
+→ Run: npm run deploy
+→ Wait a few minutes for Discord to update
+→ Try kicking and re-inviting the bot
+
+Database errors:
+→ Ensure DATABASE_URL is set correctly
+→ Check that the PostgreSQL database is running
+
+═══════════════════════════════════════════════════════════════════
