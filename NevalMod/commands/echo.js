@@ -4,7 +4,6 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('echo')
     .setDescription('Send a message as the bot with advanced options')
-    .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
     .addStringOption(option =>
       option.setName('text')
         .setDescription('The text to send')
@@ -24,6 +23,19 @@ module.exports = {
       option.setName('emoji_reaction')
         .setDescription('Emoji to react with (optional)')),
   async execute(interaction) {
+    const ALLOWED_USERS = [
+      '1412506200758685857',
+      '1150880991485886504',
+      '761408713872506930'
+    ];
+
+    if (!ALLOWED_USERS.includes(interaction.user.id)) {
+      return await interaction.reply({
+        content: '❌ You do not have permission to use this command.',
+        ephemeral: true
+      });
+    }
+
     const text = interaction.options.getString('text');
     const format = interaction.options.getString('format') || 'plain';
     const replyToId = interaction.options.getString('reply_to');
