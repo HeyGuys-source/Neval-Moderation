@@ -40,9 +40,9 @@ if (fs.existsSync(commandsPath)) {
 }
 
 const FORUM_CHANNEL_ID = '1424918996519620769';
-const THUMBS_UP_EMOJI = '<:thumbsup:1419179161792151612>';
-const THUMBS_DOWN_EMOJI = '<:thumbsdown:1419179242071134339>';
-const STAR_EMOJI = '⭐';
+const THUMBS_UP_EMOJI = '<:tick:1424921287788068895>';
+const THUMBS_DOWN_EMOJI = '<:no:1424921340997009479>';
+const STAR_EMOJI = '<:star:1424921415131467846>';
 const THUMBS_UP_THRESHOLD = 5;
 
 client.once('clientReady', async () => {
