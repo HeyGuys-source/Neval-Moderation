@@ -54,7 +54,7 @@ client.once('clientReady', async () => {
   console.log(`📝 Loaded ${client.commands.size} command(s)`);
   
   client.user.setPresence({
-    activities: [{ name: 'Site: Neval Moderation', type: ActivityType.Watching }],
+    activities: [{ name: 'Provision 12: Akai Moderation', type: ActivityType.Watching }],
     status: 'online',
   });
 
