@@ -39,7 +39,7 @@ if (fs.existsSync(commandsPath)) {
   }
 }
 
-const FORUM_CHANNEL_ID = '1412524146163847269';
+const FORUM_CHANNEL_ID = '1424918996519620769';
 const THUMBS_UP_EMOJI = '<:thumbsup:1419179161792151612>';
 const THUMBS_DOWN_EMOJI = '<:thumbsdown:1419179242071134339>';
 const STAR_EMOJI = '⭐';
